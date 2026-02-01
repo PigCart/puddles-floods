@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "puddleflood:block/puddle_full",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": 4159204
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "puddleflood.doPuddles": "水坑",
+
+  "puddleflood.title": "水坑选项",
+  "puddleflood.updateDelay": "水坑刷新延迟",
+  "puddleflood.updateStep": "水坑覆盖范围更新量",
+  "puddleflood.rainLevel": "在降雨时覆盖",
+  "puddleflood.stormLevel": "在雷暴时覆盖"
+}

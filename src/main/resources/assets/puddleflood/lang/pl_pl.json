@@ -1,0 +1,8 @@
+{
+  "puddleflood.doPuddles": "Kałuże",
+
+  "puddleflood.updateDelay": "Opóźnienie pomiędzy aktualizacjami kałuż",
+  "puddleflood.updateStep": "Wielkość zmiany pokrycia kałuż",
+  "puddleflood.rainLevel": "Pokrycie podczas desczu",
+  "puddleflood.stormLevel": "Pokrycie podczas burzy"
+}

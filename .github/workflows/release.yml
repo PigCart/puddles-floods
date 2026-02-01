@@ -1,0 +1,43 @@
+name: release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [1.20.1-fabric, 1.20.1-forge,
+                  1.21.1-fabric, 1.21.1-neoforge,
+                  1.21.9-fabric,
+                  1.21.11-fabric ]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Validate Gradle Wrapper
+        uses: gradle/actions/wrapper-validation@v3
+      - uses: burrunan/gradle-cache-action@v1
+        with:
+          gradle-distribution-sha-256-sum-warning: false
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          cache: gradle
+          java-version: 21
+      - run: chmod +x gradlew
+      - name: Build
+        run: ./gradlew ${{ matrix.version }}:build --no-daemon
+      - name: Publish
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: xeRVd78z
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          curseforge-id: 1450615
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          files: versions/${{ matrix.version }}/build/libs/*.jar
+          name: ${{ github.event.release.tag_name }} for ${{ matrix.version }}
+          version: ${{ github.event.release.tag_name }}+${{ matrix.version }}

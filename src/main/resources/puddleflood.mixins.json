@@ -1,0 +1,27 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "pigcart.puddleflood.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    ${FluidRendererImplMixin}
+    ${ChunkBuilderMeshingTaskMixin}
+    ${DefaultFluidRendererMixin}
+    ${BreakingBlockEffectMixin}
+    "client.AbstractWidgetMixin",
+    "client.BlockBehaviourMixin",
+    "client.BlockStateBaseMixin",
+    "client.ClientPacketListenerMixin",
+    "client.DripParticleMixin",
+    "client.LiquidBlockRendererMixin",
+    "AbstractThrownPotionMixin",
+    "BlockMixin",
+    "FlowingFluidMixin",
+    "LayeredCauldronBlockMixin",
+    "SnowLayerBlockMixin"
+  ],
+  "refmap": "puddleflood.refmap.json"
+}

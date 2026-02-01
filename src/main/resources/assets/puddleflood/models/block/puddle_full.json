@@ -1,0 +1,19 @@
+{
+  "__comment": "Model created with the aid of MrCrayfish's Model Creator (https://github.com/MrCrayfish/ModelCreator)",
+  "parent": "block/thin_block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "minecraft:block/water_still",
+    "water": "minecraft:block/water_still"
+  },
+  "elements": [
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 0.1, 16 ],
+      "shade": false,
+      "faces": {
+        "up": { "texture": "#water", "uv": [ 0, 0, 16, 16 ], "tintindex": 0 }
+      }
+    }
+  ]
+}

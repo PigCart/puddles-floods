@@ -1,0 +1,87 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "puddleflood:block/puddle_full"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {"north": false}
+        ]
+      },
+      "apply": [
+        {
+          "model": "puddleflood:block/puddle_end",
+          "uvlock": true,
+          "weight": 3
+        },
+        {
+          "model": "puddleflood:block/puddle_end_extended",
+          "uvlock": true
+        }
+	  ]
+    },
+    {
+      "when": {
+        "AND": [
+          {"south": false}
+        ]
+      },
+      "apply": [
+        {
+          "model": "puddleflood:block/puddle_end",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "puddleflood:block/puddle_end_extended",
+          "uvlock": true,
+          "y": 180,
+          "weight": 2
+        }
+	  ]
+    },
+    {
+      "when": {
+        "AND": [
+          {"east": false}
+        ]
+      },
+      "apply": [
+        {
+          "model": "puddleflood:block/puddle_end",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "puddleflood:block/puddle_end_extended",
+          "uvlock": true,
+          "y": 90,
+          "weight": 4
+        }
+	  ]
+    },
+    {
+      "when": {
+        "AND": [
+          {"west": false}
+        ]
+      },
+	  "apply": [
+        {
+          "model": "puddleflood:block/puddle_end",
+          "uvlock": true,
+          "y": 270,
+          "weight": 2
+        },
+        {
+          "model": "puddleflood:block/puddle_end_extended",
+          "uvlock": true,
+          "y": 270
+        }
+	  ]
+    }
+  ]
+}

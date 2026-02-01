@@ -1,0 +1,9 @@
+{
+  "puddleflood.doPuddles": "Лужи",
+
+  "puddleflood.title": "Настройки луж",
+  "puddleflood.updateDelay": "Задержка между обновлениями луж",
+  "puddleflood.updateStep": "Значение для обновления покрытия луж на",
+  "puddleflood.rainLevel": "Покрытие во время дождя",
+  "puddleflood.stormLevel": "Покрытие во время штормов",
+}

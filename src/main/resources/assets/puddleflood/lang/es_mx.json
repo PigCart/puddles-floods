@@ -1,0 +1,7 @@
+{
+  "puddleflood.doPuddles": "Charcos",
+  "puddleflood.updateDelay": "Retraso entre actualizaciones de charcos",
+  "puddleflood.updateStep": "Cantidad de actualización de cobertura de charcos",
+  "puddleflood.rainLevel": "Cobertura durante la lluvia",
+  "puddleflood.stormLevel": "Cobertura durante tormentas"
+}

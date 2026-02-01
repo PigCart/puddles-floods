@@ -1,0 +1,23 @@
+plugins {
+    id("dev.kikugie.stonecutter")
+    id("co.uzzu.dotenv.gradle") version "4.0.0"
+    id("net.fabricmc.fabric-loom-remap") version "1.14-SNAPSHOT" apply false
+    id("fabric-loom") version "1.15-SNAPSHOT" apply false
+    id("net.neoforged.moddev") version "2.0.120" apply false
+}
+stonecutter active "1.20.1-fabric"
+
+stonecutter parameters {
+    constants.match(node.metadata.project.substringAfterLast('-'), "fabric", "neoforge", "forge")
+
+    replacements.string(current.parsed >= "1.21.11") {
+        replace("ResourceLocation", "Identifier")
+    }
+    replacements.string(current.parsed >= "1.21.1") {
+        replace("me.jellysquid", "net.caffeinemc")
+        replace("me/jellysquid", "net/caffeinemc")
+    }
+    replacements.string(current.parsed >= "26.1") {
+        replace("level.random", "level.getRandom()")
+    }
+}

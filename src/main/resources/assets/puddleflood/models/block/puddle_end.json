@@ -1,0 +1,34 @@
+{
+  "parent": "block/thin_block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "minecraft:block/water_still",
+    "water": "minecraft:block/water_still"
+  },
+  "elements": [
+    {
+      "from": [ 0, 0, -1 ],
+      "to": [ 15, 0.1, 0 ],
+      "shade": false,
+      "faces": {
+        "up": { "texture": "#water", "uv": [ 0, 15, 15, 16 ], "tintindex": 0 }
+      }
+    },
+    {
+      "from": [ 1, 0, -2 ],
+      "to": [ 14, 0.1, -1 ],
+      "shade": false,
+      "faces": {
+        "up": { "texture": "#water", "uv": [ 1, 14, 14, 15 ], "tintindex": 0 }
+      }
+    },
+    {
+      "from": [ 4, 0, -3 ],
+      "to": [ 12, 0.1, -2 ],
+      "shade": false,
+      "faces": {
+        "up": { "texture": "#water", "uv": [ 4, 13, 12, 14 ], "tintindex": 0 }
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "puddleflood.title": "Puddles & Floods",
+
+  "block.puddleflood.puddle": "Puddle",
+  "item.puddleflood.puddle": "Puddle",
+
+  "puddleflood.doPuddles": "Puddles",
+  "puddleflood.useShaderpackWater": "Use shaderpack water",
+
+  "puddleflood.range": "Collection range",
+  "puddleflood.collectionSpeed": "Collection speed",
+  "puddleflood.evaporationSpeed": "Evaporation speed",
+  "puddleflood.rainLevel": "Coverage during rain",
+  "puddleflood.stormLevel": "Coverage during storms"
+}
