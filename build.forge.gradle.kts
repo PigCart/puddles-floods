@@ -87,6 +87,7 @@ dependencies {
     compileOnly("dev.su5ed.sinytra.fabric-api:fabric-api:${property("deps.forgified_fabric_api")}")
     // sodium port
     compileOnly("maven.modrinth:embeddium:${property("deps.embeddium")}")
+    //implementation("maven.modrinth:embeddium:${property("deps.embeddium")}") does not work
 }
 
 tasks {

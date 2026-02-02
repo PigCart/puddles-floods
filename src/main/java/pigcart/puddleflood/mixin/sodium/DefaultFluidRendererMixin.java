@@ -3,6 +3,7 @@ package pigcart.puddleflood.mixin.sodium;
 
 
 import me.jellysquid.mods.sodium.client.model.color.ColorProvider;
+import me.jellysquid.mods.sodium.client.model.color.ColorProviderRegistry;
 import me.jellysquid.mods.sodium.client.model.light.LightMode;
 import me.jellysquid.mods.sodium.client.model.light.LightPipeline;
 import me.jellysquid.mods.sodium.client.model.light.LightPipelineProvider;
@@ -71,6 +72,10 @@ public abstract class DefaultFluidRendererMixin implements Soduckium {
     /*protected abstract void updateQuad(ModelQuadViewMutable quad, LevelSlice level, BlockPos pos, LightPipeline lighter, Direction dir, ModelQuadFacing facing, float brightness, ColorProvider<FluidState> colorProvider, FluidState fluidState);
     *///?} else {
     protected abstract void updateQuad(ModelQuadView quad, WorldSlice world, BlockPos pos, LightPipeline lighter, Direction dir, float brightness, ColorProvider<FluidState> colorProvider, FluidState fluidState);
+
+    @Shadow
+    @Final
+    private ColorProviderRegistry colorProviderRegistry;
     //?}
 
     @Unique
@@ -153,8 +158,20 @@ public abstract class DefaultFluidRendererMixin implements Soduckium {
                 setVertex(quad, 2, southeast.x(), southeast.y(), southeast.z(), u1, v1);
                 setVertex(quad, 3, northeast.x(), northeast.y(), northeast.z(), u1, v0);
                 quad.setSprite(sprite);
-                this.updateQuad(quad, level, blockPos, lighter, Direction.UP, /*? >=1.21.1 {*//*ModelQuadFacing.UNASSIGNED,*//*?}*/ 1.0F, colorProvider, fluidState);
-                this.writeQuad(meshBuilder, /*? >=1.21.1 {*//*collector,*//*?}*/ material, offset, quad, ModelQuadFacing.UNASSIGNED, false);
+                this.updateQuad(quad,
+                        level,
+                        blockPos,
+                        lighter,
+                        Direction.UP,
+                        /*? >=1.21.1 {*//*ModelQuadFacing.UNASSIGNED,*//*?}*/ 1.0F,
+                        /*? >=1.21.1 {*//*colorProvider*//*?}else{*/this.colorProviderRegistry.getColorProvider(fluidState.getType())/*?}*/,
+                        fluidState);
+                this.writeQuad(meshBuilder,
+                        /*? >=1.21.1 {*//*collector,*//*?}*/ material,
+                        offset,
+                        quad,
+                        ModelQuadFacing.UNASSIGNED,
+                        false);
             }
         //? >=1.21.9 {
         /*}

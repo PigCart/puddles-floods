@@ -8,7 +8,7 @@ import me.jellysquid.mods.sodium.client.render.chunk.compile.pipeline.DefaultFlu
 import me.jellysquid.mods.sodium.client.render.chunk.terrain.material.Material;
 import me.jellysquid.mods.sodium.client.render.chunk.translucent_sorting.TranslucentGeometryCollector;
 import me.jellysquid.mods.sodium.client.world.LevelSlice;
-import me.jellysquid.mods.sodium./^?fabric{^//^fabric^//^?}else{^/neoforge/^?}^/.render.FluidRendererImpl;
+import me.jellysquid.mods.sodium./^?fabric{^/fabric/^?}else{^//^neoforge^//^?}^/.render.FluidRendererImpl;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
