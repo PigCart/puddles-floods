@@ -18,13 +18,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import pigcart.puddleflood.BlockPlacementUtil;
 import pigcart.puddleflood.PuddleFlood;
+import pigcart.puddleflood.config.ConfigManager;
 
 @Mixin(/*?>=1.21.9{*//*AbstractThrownPotion.class*//*?}else{*/ThrownPotion .class/*?}*/)
 public abstract class AbstractThrownPotionMixin {
 
     @Inject(method = "onHitBlock", at = @At("HEAD"))
     public void onHitBlock(BlockHitResult result, CallbackInfo ci) {
-        if (result.getDirection().equals(Direction.UP)) {
+        if (ConfigManager.config.doPotionPuddles && result.getDirection().equals(Direction.UP)) {
             final BlockPos pos = result.getBlockPos().above();
             Level level = ((Entity) (Object) this).level();
             if (BlockPlacementUtil.isSolidSurface(level, pos.below()) && level.getBlockState(pos).isAir()) {

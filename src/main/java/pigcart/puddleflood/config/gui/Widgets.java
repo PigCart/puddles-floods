@@ -176,6 +176,14 @@ public class Widgets {
         Field[] fields = screen.config.getClass().getFields();
         for (Field field : fields) {
             if (field.isAnnotationPresent(NoGUI.class)) continue;
+            boolean editable = true;
+            if (field.isAnnotationPresent(OnlyEditableIf.class)) {
+                final OnlyEditableIf annotation = field.getAnnotation(OnlyEditableIf.class);
+                try {
+                    final Function<Object, Boolean> function = (Function<Object, Boolean>) annotation.value().getConstructors()[0].newInstance();
+                    editable = function.apply(screen.config);
+                } catch (InvocationTargetException | IllegalAccessException | InstantiationException e) {throw new RuntimeException(e);}
+            }
             if (field.isAnnotationPresent(OnlyVisibleIf.class)) {
                 final OnlyVisibleIf annotation = field.getAnnotation(OnlyVisibleIf.class);
                 try {
@@ -234,6 +242,9 @@ public class Widgets {
                 screen.add(widgets);
             } else {
                 AbstractWidget[] widgets = getOptionWidget(screen, field, name, currentValue, defaultValue, onValueChange, valueFormatter, type);
+                for (AbstractWidget widget : widgets) {
+                    widget.active = editable;
+                }
                 screen.add(widgets);
             }
         }

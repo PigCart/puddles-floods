@@ -4,26 +4,16 @@ import com.google.gson.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.Registry;
-import net.minecraft.core.particles.*;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import pigcart.puddleflood.PuddleFlood;
-import pigcart.puddleflood.VersionUtil;
 import pigcart.puddleflood.config.gui.ConfigScreen;
 
 import java.awt.*;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class ConfigManager {
     static final Gson GSON = new GsonBuilder().setPrettyPrinting()
@@ -129,33 +119,10 @@ public class ConfigManager {
         }
     }
 
-    public static class SupplyParticleTypes implements Supplier<List<String>> {
-        public List<String> get() {
-            List<String> list = new ArrayList<>();
-            for (Map.Entry<ResourceKey<ParticleType<?>>, ParticleType<?>> entry : BuiltInRegistries.PARTICLE_TYPE.entrySet()) {
-                if (entry.getValue() instanceof SimpleParticleType) {
-                    list.add(VersionUtil.getKeyId(entry.getKey()).toString());
-                }
-            }
-            return list;
+    public static class ClientHasAuthority implements Function<Object, Boolean> {
+        public Boolean apply(Object configContext) {
+            if (Minecraft.getInstance().level == null) return true;
+            return Minecraft.getInstance().getSingleplayerServer() != null;
         }
-    }
-    public static class SupplyBlocks implements Supplier<List<String>> {
-        public List<String> get() {
-            if (Minecraft.getInstance().level == null) return List.of("[!] §e§l" + Component.translatable("puddleflood.suggest").getString());
-            return getRegistryEntries(BuiltInRegistries.BLOCK);
-        }
-    }
-    public static class SupplyBiomes implements Supplier<List<String>> {
-        public List<String> get() {
-            if (Minecraft.getInstance().level == null) return List.of("[!] §e§l" + Component.translatable("puddleflood.suggest").getString());
-            return getRegistryEntries(VersionUtil.getRegistry(Registries.BIOME));
-        }
-    }
-    public static List<String> getRegistryEntries(Registry<?> registry) {
-        List<String> list = new ArrayList<>();
-        registry.keySet().forEach((id)-> list.add(id.toString()));
-        VersionUtil.getTagIds(registry).forEach((tag)-> list.add("#" + tag.location()));
-        return list;
     }
 }

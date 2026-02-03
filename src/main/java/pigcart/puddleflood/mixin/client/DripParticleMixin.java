@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import pigcart.puddleflood.BlockPlacementUtil;
 import pigcart.puddleflood.PuddleFlood;
+import pigcart.puddleflood.config.ConfigManager;
 
 @Mixin(DripParticle.class)
 public abstract class DripParticleMixin extends SingleQuadParticle {
@@ -27,7 +28,11 @@ public abstract class DripParticleMixin extends SingleQuadParticle {
 
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/particle/DripParticle;postMoveUpdate()V"))
     public void tickAddPuddlePostMove(CallbackInfo ci) {
-        if (this.onGround && this.type.isSame(Fluids.WATER) && this.level.random.nextBoolean()) {
+        if (ConfigManager.config.doDripPuddles
+                && this.onGround
+                && this.type.isSame(Fluids.WATER)
+                && this.level.random.nextBoolean()
+        ) {
             BlockPos pos = BlockPos.containing(x, y, z);
             if (BlockPlacementUtil.isUnobstructedFlatSurface(this.level, pos)) {
                 this.level.setBlock(pos, PuddleFlood.PUDDLE_BLOCK.getStateAt(pos, this.level), 0);

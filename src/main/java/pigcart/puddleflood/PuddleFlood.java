@@ -44,7 +44,7 @@ public class PuddleFlood {
                 "Biome: " + biomeStr,
                 "could have puddle: " + BlockPlacementUtil.withinPuddleThreshold(level, playerBlockPos),
                 "is flat surface: " + BlockPlacementUtil.isUnobstructedFlatSurface(level, playerBlockPos),
-                "can flood here: " + BlockPlacementUtil.canFloodHere(level, playerBlockPos),
+                "can flood here: " + BlockPlacementUtil.canFlood(level, playerBlockPos),
                 "Collection speed: " + ConfigManager.config.collectionSpeed,
                 "Evaporation speed: " + ConfigManager.config.evaporationSpeed,
                 "Rain level: " + ConfigManager.config.rainLevel,

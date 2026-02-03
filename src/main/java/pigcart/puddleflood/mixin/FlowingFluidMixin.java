@@ -1,8 +1,6 @@
 package pigcart.puddleflood.mixin;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.FluidState;
 import org.spongepowered.asm.mixin.Mixin;
@@ -11,8 +9,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import pigcart.puddleflood.BlockPlacementUtil;
 import pigcart.puddleflood.PuddleFlood;
+import pigcart.puddleflood.config.ConfigManager;
 //?>=1.21.9{
 /*import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.state.BlockState;
 *///?} else {
 import net.minecraft.world.level.Level;
 //?}
@@ -28,7 +28,7 @@ public abstract class FlowingFluidMixin {
             FluidState fluidState,
             CallbackInfo ci
     ) {
-        if (level.random.nextBoolean() && BlockPlacementUtil.isUnobstructedFlatSurface(level, pos)) {
+        if (ConfigManager.config.doFlowingWaterPuddles && level.random.nextBoolean() && BlockPlacementUtil.isUnobstructedFlatSurface(level, pos)) {
             level.setBlockAndUpdate(pos, PuddleFlood.PUDDLE_BLOCK.getStateAt(pos, level));
         }
     }

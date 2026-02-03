@@ -42,7 +42,7 @@ public class BlockPlacementUtil {
             for (int i = 0; i < config.collectionSpeed; i++) {
                 final BlockState state = getRandomHeightmapPos(level, pos);
                 if (!state.is(PUDDLE_BLOCK) && VersionUtil.getPrecipitationAt(level, pos) == Biome.Precipitation.RAIN) {
-                    if (hasRainPuddle(level, pos) || canFloodHere(level, pos)) {
+                    if (hasRainPuddle(level, pos) || canFlood(level, pos)) {
                         level.setBlock(pos, PUDDLE_BLOCK.getStateAt(pos, level), 0);
                     }
                 }
@@ -73,14 +73,16 @@ public class BlockPlacementUtil {
         return level.getBlockState(destination);
     }
 
-    public static boolean canFloodHere(Level level, BlockPos blockPos) {
-        return blockPos.getY() == level.getSeaLevel()
+    public static boolean canFlood(Level level, BlockPos blockPos) {
+        return config.doFloods
+                && blockPos.getY() == level.getSeaLevel()
                 && !level.getBiome(blockPos).is(Biomes.BEACH)
                 && isUnobstructedFlatSurface(level, blockPos);
     }
 
     public static boolean hasRainPuddle(Level level, BlockPos pos) {
-        return isHighestBlock(level, pos)
+        return config.doRainPuddles
+                && isHighestBlock(level, pos)
                 && withinPuddleThreshold(level, pos)
                 && isUnobstructedFlatSurface(level, pos);
     }
