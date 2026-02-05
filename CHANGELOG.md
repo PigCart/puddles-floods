@@ -1,3 +1,11 @@
+# v1.0.1
+###### Feb 3, 2026
+- added config toggles for all features
+- fixed crash on 1.20.1 with sodium
+- fixed cauldron desyncing on break when on servers without the mod
+- fixed mod not loading on the server
+
+
 # v1.0
 ###### Jan 31, 2026
 - first release featuring puddles:

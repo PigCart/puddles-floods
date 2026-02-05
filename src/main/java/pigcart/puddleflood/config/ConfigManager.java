@@ -1,19 +1,11 @@
 package pigcart.puddleflood.config;
 
 import com.google.gson.*;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
 import pigcart.puddleflood.PuddleFlood;
-import pigcart.puddleflood.config.gui.ConfigScreen;
 
 import java.awt.*;
 import java.io.*;
 import java.lang.reflect.Type;
-import java.text.NumberFormat;
-import java.util.function.Function;
 
 public class ConfigManager {
     static final Gson GSON = new GsonBuilder().setPrettyPrinting()
@@ -21,10 +13,6 @@ public class ConfigManager {
             .create();
     static final String CONFIG_PATH = "config/" + PuddleFlood.MOD_ID + ".json";
     public static ConfigData config = new ConfigData();
-
-    public static Screen screenPlease(Screen lastScreen) {
-        return new ConfigScreen(lastScreen, config, getDefaultConfig(), Component.translatable("puddleflood.title"));
-    }
 
     public static ConfigData getDefaultConfig() {
         return new ConfigData();
@@ -82,47 +70,4 @@ public class ConfigManager {
         }
     }
 
-    public static class Percent implements Function<Object, Component> {
-        public Component apply(Object value) {
-            return Component.literal(NumberFormat.getPercentInstance().format(value));
-        }
-    }
-
-    public static class PercentOrOff implements Function<Object, Component> {
-        public Component apply(Object value) {
-            return ((Number)value).floatValue() == 0 ? CommonComponents.OPTION_OFF.copy().withStyle(ChatFormatting.RED) : Component.literal(NumberFormat.getPercentInstance().format(value));
-        }
-    }
-
-    public static class ZeroIsAutomatic implements Function<Object, Component> {
-        public Component apply(Object stringValue) {
-            final int value = Integer.parseInt((String) stringValue);
-            return value == 0 ? Component.translatable("puddleflood.auto") : Component.literal((String) stringValue);
-        }
-    }
-
-    public static class ReloadResources implements Runnable {
-        public void run() {
-            Minecraft.getInstance().reloadResourcePacks();
-        }
-    }
-
-    public static class ReloadChunks implements Runnable {
-        public void run() {
-            Minecraft.getInstance().levelRenderer.allChanged();
-        }
-    }
-
-    public static class RefreshScreen implements Runnable {
-        public void run() {
-            ((ConfigScreen)Minecraft.getInstance().screen).refresh();
-        }
-    }
-
-    public static class ClientHasAuthority implements Function<Object, Boolean> {
-        public Boolean apply(Object configContext) {
-            if (Minecraft.getInstance().level == null) return true;
-            return Minecraft.getInstance().getSingleplayerServer() != null;
-        }
-    }
 }

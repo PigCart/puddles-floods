@@ -2,7 +2,6 @@ package pigcart.puddleflood.mixin.client;
 
 import net.minecraft.client.renderer.block.LiquidBlockRenderer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
@@ -25,7 +24,7 @@ public class LiquidBlockRendererMixin {
 
     /*@Inject(method = "isFaceOccludedByState", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/shapes/Shapes;empty()Lnet/minecraft/world/phys/shapes/VoxelShape;"), cancellable = true)
     private static void isFaceOccludedByPuddle(Direction direction, float height, BlockState state, CallbackInfoReturnable<Boolean> cir) {
-        if (direction == Direction.UP && state.is(PuddleFlood.PUDDLE_BLOCK)) {
+        if (direction == Direction.UP && state.is(PuddleFloodClient.PUDDLE_BLOCK)) {
             cir.setReturnValue(true);
         }
     }*/

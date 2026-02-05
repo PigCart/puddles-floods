@@ -39,6 +39,10 @@ public class ConfigScreen extends Screen {
         this.configGenericType = null;
     }
 
+    public static Screen get(Screen lastScreen) {
+        return new ConfigScreen(lastScreen, ConfigManager.config, ConfigManager.getDefaultConfig(), Component.translatable("puddleflood.title"));
+    }
+
     @Override
     protected void init() {
         addTitle();

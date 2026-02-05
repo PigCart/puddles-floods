@@ -1,9 +1,6 @@
 package pigcart.puddleflood.loaders.fabric;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -19,25 +16,9 @@ import pigcart.puddleflood.VersionUtil;
 import pigcart.puddleflood.block.PuddleBlock;
 
 //? >=26.1 {
-/*import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
-import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+/*import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 *///?} else {
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-//?}
-
-//? if >=26.1 {
-/*import net.fabricmc.fabric.api.client.rendering.v1.ChunkSectionLayerMap;
-*///?} else if >=1.21.9 {
-/*import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
-*///? } else {
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-//?}
-
-//? >=1.21.9 {
-/*import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-*///?} else {
-import net.minecraft.client.renderer.RenderType;
 //?}
 
 import java.util.function.Function;
@@ -45,43 +26,19 @@ import java.util.function.Function;
 import static pigcart.puddleflood.PuddleFlood.PUDDLE_BLOCK;
 
 
-public class FabricEntrypoint implements ClientModInitializer {
+public class FabricEntrypoint implements ModInitializer {
 
     @Override
-    public void onInitializeClient() {
+    public void onInitialize() {
         init();
     }
 
     // used also by NeoforgeEntrypoint
     public static void init() {
-        ClientTickEvents.END_CLIENT_TICK.register(PuddleFlood::onTick);
-        //ClientPlayConnectionEvents.JOIN.register(PuddleFlood::onJoin);
-        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-            dispatcher.register(PuddleFlood.getCommands());
-        });
 
         PUDDLE_BLOCK = (PuddleBlock) registerBlock("puddle", PuddleBlock::new, BlockBehaviour.Properties./*?>=1.21.1{*//*ofFullCopy*//*?}else{*/copy/*?}*/(Blocks.WATER));
 
-        //? if >=26.1 {
-        /*ChunkSectionLayerMap.putBlock(PUDDLE_BLOCK, ChunkSectionLayer.TRANSLUCENT);
-        *///?} else if >=1.21.9 {
-        /*BlockRenderLayerMap.putBlock(PUDDLE_BLOCK, ChunkSectionLayer.TRANSLUCENT);
-         *///?} else {
-        BlockRenderLayerMap.INSTANCE.putBlock(PUDDLE_BLOCK, RenderType.translucent());
-        //?}
-
-        //? if >=26.1 {
-        /*BlockColorRegistry.register(PuddleFlood::puddleTintProvider, PUDDLE_BLOCK);
-        *///?} else {
-        ColorProviderRegistry.BLOCK.register(PuddleFlood::puddleTintProvider, PUDDLE_BLOCK);
-        //?}
-
-        // 1.21.4 added JSON item definition that handles tint
-        //? <1.21.4 {
-        ColorProviderRegistry.ITEM.register(PuddleFlood::puddleItemTintProvider, PUDDLE_BLOCK); //ARGB
-        //?}
-
-        PuddleFlood.onInitializeClient();
+        PuddleFlood.onInitialize();
     }
 
     /// register a block with a corresponding BlockItem in the natural blocks creative inventory tab

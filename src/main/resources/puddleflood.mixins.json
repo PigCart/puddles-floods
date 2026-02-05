@@ -7,6 +7,13 @@
     "defaultRequire": 1
   },
   "mixins": [
+    "AbstractThrownPotionMixin",
+    "BlockMixin",
+    "FlowingFluidMixin",
+    "LayeredCauldronBlockMixin",
+    "SnowLayerBlockMixin"
+  ],
+  "client": [
     ${FluidRendererImplMixin}
     ${ChunkBuilderMeshingTaskMixin}
     ${DefaultFluidRendererMixin}
@@ -16,12 +23,7 @@
     "client.BlockStateBaseMixin",
     "client.ClientPacketListenerMixin",
     "client.DripParticleMixin",
-    "client.LiquidBlockRendererMixin",
-    "AbstractThrownPotionMixin",
-    "BlockMixin",
-    "FlowingFluidMixin",
-    "LayeredCauldronBlockMixin",
-    "SnowLayerBlockMixin"
+    "client.LiquidBlockRendererMixin"
   ],
   "refmap": "puddleflood.refmap.json"
 }

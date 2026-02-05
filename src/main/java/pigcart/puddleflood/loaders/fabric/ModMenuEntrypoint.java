@@ -3,13 +3,13 @@ package pigcart.puddleflood.loaders.fabric;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import pigcart.puddleflood.config.ConfigManager;
+import pigcart.puddleflood.config.gui.ConfigScreen;
 
 public class ModMenuEntrypoint implements ModMenuApi {
 
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return ConfigManager::screenPlease;
+        return ConfigScreen::get;
     }
 
 }

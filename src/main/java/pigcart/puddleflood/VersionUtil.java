@@ -3,7 +3,6 @@ package pigcart.puddleflood;
 import com.mojang.blaze3d.platform.NativeImage;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -12,18 +11,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.Vec3;
 //? >=1.21.11 {
 /*import net.minecraft.world.attribute.EnvironmentAttributes;
 *///?}
 //? >=1.21.9 {
-/*import net.minecraft.data.AtlasIds;
-import net.minecraft.world.phys.shapes.CollisionContext;
-*///?}
+//?}
 
-import java.awt.Color;
 import java.net.URI;
 import java.util.stream.Stream;
 
@@ -32,16 +26,6 @@ public class VersionUtil {
     // FastColor removed in modern versions
     public static int getBlue(int packedColor) {
         return packedColor & 255;
-    }
-
-    public static boolean isModLoaded(String id) {
-        //? fabric {
-        return net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded(id);
-        //?} forge {
-        /*return net.minecraftforge.fml.ModList.get().isLoaded(id);
-        *///?} neoforge {
-        /*return net.neoforged.fml.ModList.get().isLoaded(id);
-        *///?}
     }
 
     @SuppressWarnings("removal")

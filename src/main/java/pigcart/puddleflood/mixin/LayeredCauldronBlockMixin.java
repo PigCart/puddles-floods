@@ -2,7 +2,6 @@ package pigcart.puddleflood.mixin;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,7 +14,10 @@ import pigcart.puddleflood.config.ConfigManager;
 public abstract class LayeredCauldronBlockMixin extends BlockMixin {
     @Override
     public void destroy(LevelAccessor level, BlockPos pos, BlockState state, CallbackInfo ci) {
-        if (ConfigManager.config.doCauldronPuddles && BlockPlacementUtil.isSolidSurface(level, pos.below())) {
+        if (ConfigManager.config.doCauldronPuddles
+                && BlockPlacementUtil.isSolidSurface(level, pos.below())
+                && !level.isClientSide()
+        ) {
             level.setBlock(pos, PuddleFlood.PUDDLE_BLOCK.getStateAt(pos, level), 0);
         }
     }

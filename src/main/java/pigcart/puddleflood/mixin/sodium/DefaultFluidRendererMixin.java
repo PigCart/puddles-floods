@@ -3,7 +3,6 @@ package pigcart.puddleflood.mixin.sodium;
 
 
 import me.jellysquid.mods.sodium.client.model.color.ColorProvider;
-import me.jellysquid.mods.sodium.client.model.color.ColorProviderRegistry;
 import me.jellysquid.mods.sodium.client.model.light.LightMode;
 import me.jellysquid.mods.sodium.client.model.light.LightPipeline;
 import me.jellysquid.mods.sodium.client.model.light.LightPipelineProvider;
@@ -12,8 +11,6 @@ import me.jellysquid.mods.sodium.client.model.quad.ModelQuadViewMutable;
 import me.jellysquid.mods.sodium.client.model.quad.properties.ModelQuadFacing;
 import me.jellysquid.mods.sodium.client.render.chunk.compile.buffers.ChunkModelBuilder;
 import me.jellysquid.mods.sodium.client.render.chunk.terrain.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.geom.builders.UVPair;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;
@@ -26,7 +23,6 @@ import net.minecraft.world.level.levelgen.SingleThreadedRandomSource;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -43,6 +39,7 @@ import me.jellysquid.mods.sodium.client.render.chunk.translucent_sorting.Translu
 *///?} else {
 import me.jellysquid.mods.sodium.client.render.chunk.compile.pipeline.FluidRenderer;
 import me.jellysquid.mods.sodium.client.world.WorldSlice;
+import me.jellysquid.mods.sodium.client.model.color.ColorProviderRegistry;
 //?}
 //? >=1.21.9 {
 /*import net.minecraft.client.renderer.block.model.BlockModelPart;
@@ -73,9 +70,7 @@ public abstract class DefaultFluidRendererMixin implements Soduckium {
     *///?} else {
     protected abstract void updateQuad(ModelQuadView quad, WorldSlice world, BlockPos pos, LightPipeline lighter, Direction dir, float brightness, ColorProvider<FluidState> colorProvider, FluidState fluidState);
 
-    @Shadow
-    @Final
-    private ColorProviderRegistry colorProviderRegistry;
+    @Shadow(remap = false) @Final private ColorProviderRegistry colorProviderRegistry;
     //?}
 
     @Unique
@@ -114,14 +109,14 @@ public abstract class DefaultFluidRendererMixin implements Soduckium {
                 final TextureAtlasSprite sprite = bakedQuad./*? >=1.21.9 {*//*sprite()*//*?}else{*/getSprite()/*?}*/;
                 //? >=1.21.11 {
                 /*// uv problem solved in 1.21.11 thanks mojang
-                float u0 = UVPair.unpackU(bakedQuad.packedUV0());
-                float u1 = UVPair.unpackU(bakedQuad.packedUV2());
-                float v0 = UVPair.unpackV(bakedQuad.packedUV0());
-                float v1 = UVPair.unpackV(bakedQuad.packedUV2());
-                Vector3fc northwest = bakedQuad.position0();
-                Vector3fc southwest = bakedQuad.position1();
-                Vector3fc southeast = bakedQuad.position2();
-                Vector3fc northeast = bakedQuad.position3();
+                float u0 = net.minecraft.client.model.geom.builders.UVPair.unpackU(bakedQuad.packedUV0());
+                float u1 = net.minecraft.client.model.geom.builders.UVPair.unpackU(bakedQuad.packedUV2());
+                float v0 = net.minecraft.client.model.geom.builders.UVPair.unpackV(bakedQuad.packedUV0());
+                float v1 = net.minecraft.client.model.geom.builders.UVPair.unpackV(bakedQuad.packedUV2());
+                org.joml.Vector3fc northwest = bakedQuad.position0();
+                org.joml.Vector3fc southwest = bakedQuad.position1();
+                org.joml.Vector3fc southeast = bakedQuad.position2();
+                org.joml.Vector3fc northeast = bakedQuad.position3();
                 *///?} else {
                 float u0 = sprite.getU0();
                 float u1 = sprite.getU1();

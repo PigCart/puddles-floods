@@ -1,12 +1,10 @@
 package pigcart.puddleflood.block;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
@@ -20,7 +18,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import pigcart.puddleflood.BlockPlacementUtil;
-import pigcart.puddleflood.PuddleFlood;
 import pigcart.puddleflood.VersionUtil;
 import pigcart.puddleflood.duck.BlockTickDuck;
 
@@ -104,7 +101,7 @@ public class PuddleBlock extends Block implements BlockTickDuck {
     }
 
     @Override
-    public void puddleflood_clientRandomTick(ClientLevel level, BlockPos pos) {
+    public void puddleflood_clientRandomTick(Level level, BlockPos pos) {
         this.randomTick(level, pos);
     }
 
