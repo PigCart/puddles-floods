@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import pigcart.puddleflood.PuddleFlood;
 import pigcart.puddleflood.VersionUtil;
 import pigcart.puddleflood.block.PuddleBlock;
-
 //? >=26.1 {
 /*import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 *///?} else {
@@ -24,6 +23,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import java.util.function.Function;
 
 import static pigcart.puddleflood.PuddleFlood.PUDDLE_BLOCK;
+import static pigcart.puddleflood.PuddleFlood.PUDDLE_PROPERTIES;
 
 
 public class FabricEntrypoint implements ModInitializer {
@@ -36,7 +36,10 @@ public class FabricEntrypoint implements ModInitializer {
     // used also by NeoforgeEntrypoint
     public static void init() {
 
-        PUDDLE_BLOCK = (PuddleBlock) registerBlock("puddle", PuddleBlock::new, BlockBehaviour.Properties./*?>=1.21.1{*//*ofFullCopy*//*?}else{*/copy/*?}*/(Blocks.WATER));
+        PUDDLE_BLOCK = (PuddleBlock) registerBlock("puddle",
+                PuddleBlock::new,
+                PUDDLE_PROPERTIES
+        );
 
         PuddleFlood.onInitialize();
     }

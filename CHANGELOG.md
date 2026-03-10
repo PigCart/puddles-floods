@@ -1,5 +1,10 @@
+# v1.1.0
+###### Mar 10, 2026
+- fixed lava creating water puddles
+- Added footstep splash sounds
+
 # v1.0.1
-###### Feb 3, 2026
+###### Feb 5, 2026
 - added config toggles for all features
 - fixed crash on 1.20.1 with sodium
 - fixed cauldron desyncing on break when on servers without the mod

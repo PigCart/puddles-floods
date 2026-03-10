@@ -11,7 +11,8 @@
     "BlockMixin",
     "FlowingFluidMixin",
     "LayeredCauldronBlockMixin",
-    "SnowLayerBlockMixin"
+    "SnowLayerBlockMixin",
+    "WaterFluidMixin"
   ],
   "client": [
     ${FluidRendererImplMixin}

@@ -19,8 +19,7 @@ import net.minecraftforge.registries.RegisterEvent;
 import pigcart.puddleflood.block.PuddleBlock;
 import pigcart.puddleflood.config.gui.ConfigScreen;
 
-import static pigcart.puddleflood.PuddleFlood.MOD_ID;
-import static pigcart.puddleflood.PuddleFlood.PUDDLE_BLOCK;
+import static pigcart.puddleflood.PuddleFlood.*;
 
 @Mod(MOD_ID)
 public class ForgeEntrypoint {
@@ -50,7 +49,7 @@ public class ForgeEntrypoint {
     public static void onRegisterEvent(RegisterEvent event) {
         event.register(ForgeRegistries.Keys.BLOCKS,
                 h -> {
-                    PUDDLE_BLOCK = new PuddleBlock(BlockBehaviour.Properties.copy((Blocks.WATER)));
+                    PUDDLE_BLOCK = new PuddleBlock(PUDDLE_PROPERTIES);
                     h.register(new ResourceLocation(MOD_ID, "puddle"), PUDDLE_BLOCK);
                 }
         );

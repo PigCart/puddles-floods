@@ -27,10 +27,6 @@ public class PuddleBlock extends Block implements BlockTickDuck {
     public static final BooleanProperty EAST = BlockStateProperties.EAST;
     public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
     public static final BooleanProperty WEST = BlockStateProperties.WEST;
-    //public static final BooleanProperty NORTHEAST = BooleanProperty.create("northeast");
-    //public static final BooleanProperty SOUTHEAST = BooleanProperty.create("southeast");
-    //public static final BooleanProperty SOUTHWEST = BooleanProperty.create("southwest");
-    //public static final BooleanProperty NORTHWEST = BooleanProperty.create("northwest");
 
     public PuddleBlock(Properties properties) {
         super(properties);
@@ -42,19 +38,11 @@ public class PuddleBlock extends Block implements BlockTickDuck {
     }
 
     public BlockState getStateAt(BlockPos pos, BlockGetter blockGetter) {
-        //BlockState northEastBlock = blockGetter.getBlockState(pos.offset(-1, 0, -1));
-        //BlockState southEastBlock = blockGetter.getBlockState(pos.offset(-1, 0, 1));
-        //BlockState southWestBlock = blockGetter.getBlockState(pos.offset(1, 0, 1));
-        //BlockState northWestBlock = blockGetter.getBlockState(pos.offset(1, 0, -1));
         return this.defaultBlockState()
                 .setValue(NORTH, attachesTo(pos.north(), blockGetter))
                 .setValue(SOUTH, attachesTo(pos.south(), blockGetter))
                 .setValue(WEST, attachesTo(pos.west(), blockGetter))
                 .setValue(EAST, attachesTo(pos.east(), blockGetter));
-                /*.setValue(NORTHEAST, attachesTo(northEastBlock))
-                .setValue(SOUTHEAST, attachesTo(southEastBlock))
-                .setValue(SOUTHWEST, attachesTo(southWestBlock))
-                .setValue(NORTHWEST, attachesTo(northWestBlock));*/
     }
 
     @Override
@@ -135,6 +123,6 @@ public class PuddleBlock extends Block implements BlockTickDuck {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(NORTH, EAST, WEST, SOUTH/*, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST*/);
+        builder.add(NORTH, EAST, WEST, SOUTH);
     }
 }

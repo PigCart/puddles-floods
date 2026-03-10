@@ -1,7 +1,11 @@
 {
   "puddle.step": {
     "sounds": [
-      "puddleflood:step/puddle1"
-    ]
+      "puddleflood:step1",
+      "puddleflood:step2",
+      "puddleflood:step3",
+      "puddleflood:step4"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
   }
 }
