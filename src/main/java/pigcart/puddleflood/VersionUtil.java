@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -110,5 +111,13 @@ public class VersionUtil {
         *///?} else {
         return key.location();
          //?}
+    }
+
+    static void addChatMsg(String message) {
+        //? >=26.1 {
+        /*Minecraft.getInstance().gui.getChat().addClientSystemMessage(Component.literal(message));
+        *///?} else {
+        Minecraft.getInstance().gui.getChat().addMessage(Component.literal(message));
+        //?}
     }
 }

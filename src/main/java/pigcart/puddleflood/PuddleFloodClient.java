@@ -6,10 +6,8 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.state.BlockState;
 import pigcart.puddleflood.config.ConfigManager;
@@ -18,8 +16,6 @@ import pigcart.puddleflood.config.gui.ConfigScreen;
 import java.util.List;
 
 public class PuddleFloodClient {
-
-    public static SoundEvent PUDDLE_STEP_SOUND;
 
     public static List<String> getDebugLines() {
         ClientLevel level = Minecraft.getInstance().level;
@@ -42,13 +38,6 @@ public class PuddleFloodClient {
         );
     }
 
-    ///  sets up features that dont require a specific modloader
-    public static void onInitialize() {
-
-        //TODO
-        PUDDLE_STEP_SOUND = createSoundEvent("puddle.step");
-    }
-
     @SuppressWarnings("unchecked")
     public static <S> LiteralArgumentBuilder<S> getCommands() {
         return (LiteralArgumentBuilder<S>) LiteralArgumentBuilder.literal(PuddleFlood.MOD_ID)
@@ -59,7 +48,7 @@ public class PuddleFloodClient {
                 })
                 .then(LiteralArgumentBuilder.literal("debug")
                         .executes(ctx -> {
-                            getDebugLines().forEach(PuddleFloodClient::addChatMsg);
+                            getDebugLines().forEach(VersionUtil::addChatMsg);
                             return 0;
                         })
                 );
@@ -76,11 +65,12 @@ public class PuddleFloodClient {
         return SoundEvent.createVariableRangeEvent(VersionUtil.getId(name));
     }
 
-    private static void addChatMsg(String message) {
-        Minecraft.getInstance().gui.getChat().addMessage(Component.literal(message));
-    }
-
-    public static int puddleTintProvider(BlockState blockState, BlockAndTintGetter blockAndTintGetter, BlockPos blockPos, int tintIndex) {
+    //? <26.1 {
+    public static int puddleTintProvider(BlockState blockState,
+                                         net.minecraft.world.level.BlockAndTintGetter blockAndTintGetter,
+                                         BlockPos blockPos,
+                                         int tintIndex
+    ) {
         if (blockAndTintGetter != null && blockPos != null) {
             return blockAndTintGetter.getBlockTint(blockPos, BiomeColors.WATER_COLOR_RESOLVER);
         }
@@ -89,4 +79,5 @@ public class PuddleFloodClient {
     public static int puddleItemTintProvider(ItemStack itemStack, int tintIndex) {
         return 0xFF3F76E4;
     }
+    //?}
 }

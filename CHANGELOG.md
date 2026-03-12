@@ -1,5 +1,9 @@
+# v1.1.1
+###### in progress
+- added minecraft 26.1 support
+
 # v1.1.0
-###### Mar 10, 2026
+###### Mar 11, 2026
 - fixed lava creating water puddles
 - Added footstep splash sounds
 

@@ -57,7 +57,7 @@ dependencies {
 
     implementation("net.fabricmc:fabric-loader:${property("deps.fabric-loader")}")
     implementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric-api")}")
-    //compileOnly("com.terraformersmc:modmenu:${property("deps.modmenu")}")
+    compileOnly("com.terraformersmc:modmenu:${property("deps.modmenu")}")
 
     //sodium
     //compileOnly("maven.modrinth:sodium:${property("deps.sodium")}")
