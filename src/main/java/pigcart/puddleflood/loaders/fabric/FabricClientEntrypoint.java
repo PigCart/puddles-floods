@@ -12,10 +12,10 @@ import net.minecraft.client.color.block.BlockTintSources;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 //?}
 
-//? <26.1 {
-import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
- //?} <1.21.9 {
-/*import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+//? <1.21.9 {
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+//?} <26.1 {
+/*import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 *///?}
 
 //? >=1.21.9 {
@@ -55,10 +55,10 @@ public class FabricClientEntrypoint implements ClientModInitializer {
         });
 
         // since 26.1 render layers are automatically assigned on model load based on texture
-        //? <26.1 {
-        BlockRenderLayerMap.putBlock(PUDDLE_BLOCK, ChunkSectionLayer.TRANSLUCENT);
-         //?} <1.21.9 {
-        /*BlockRenderLayerMap.INSTANCE.putBlock(PUDDLE_BLOCK, RenderType.translucent());
+        //? <1.21.9 {
+        BlockRenderLayerMap.INSTANCE.putBlock(PUDDLE_BLOCK, RenderType.translucent());
+        //?} <26.1 {
+        /*BlockRenderLayerMap.putBlock(PUDDLE_BLOCK, ChunkSectionLayer.TRANSLUCENT);
         *///?}
 
         //? if >=26.1 {

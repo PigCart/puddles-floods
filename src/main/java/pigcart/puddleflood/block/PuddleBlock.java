@@ -59,8 +59,10 @@ public class PuddleBlock extends Block implements BlockTickDuck {
         if (direction.getAxis().isHorizontal()) {
             return getStateAt(pos, level);
         } else if (direction == Direction.DOWN && neighborState.isAir()) {
-            VersionUtil.schedule(()-> Minecraft.getInstance().level.setBlock(pos, Blocks.AIR.defaultBlockState(), 0));
-            return state;
+            if (level.isClientSide()) {
+                VersionUtil.schedule(() -> Minecraft.getInstance().level.setBlock(pos, Blocks.AIR.defaultBlockState(), 0));
+            }
+            return Blocks.AIR.defaultBlockState();
         } else {
             return state;
         }
