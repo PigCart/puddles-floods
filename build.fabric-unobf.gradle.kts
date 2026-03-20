@@ -24,7 +24,6 @@ tasks.named<ProcessResources>("processResources") {
 
         // insert version-specific mixins
         // sodium mixins disabled until sodium is available for this version
-        this["FluidRendererImplMixin"      ] = if (sc.current.parsed  < "26.1") "\"sodium.FluidRendererImplMixin\"," else ""
         this["ChunkBuilderMeshingTaskMixin"] = if (sc.current.parsed  < "26.1") "\"sodium.ChunkBuilderMeshingTaskMixin\"," else ""
         this["DefaultFluidRendererMixin"   ] = if (sc.current.parsed  < "26.1") "\"sodium.DefaultFluidRendererMixin\"," else ""
         this["BreakingBlockEffectMixin"    ] = "" // <1.21.9 only

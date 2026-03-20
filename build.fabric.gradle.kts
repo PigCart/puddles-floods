@@ -23,7 +23,6 @@ tasks.named<ProcessResources>("processResources") {
         this["access_widener"]= prop("mod.id")
 
         // insert version-specific mixins
-        this["FluidRendererImplMixin"      ] = if (sc.current.parsed  >= "1.21.1") "\"sodium.FluidRendererImplMixin\"," else ""
         this["ChunkBuilderMeshingTaskMixin"] = if (sc.current.parsed  < "26.1") "\"sodium.ChunkBuilderMeshingTaskMixin\"," else ""
         this["DefaultFluidRendererMixin"   ] = if (sc.current.parsed  < "26.1") "\"sodium.DefaultFluidRendererMixin\"," else ""
         this["BreakingBlockEffectMixin"    ] = if (sc.current.parsed  < "26.1") "\"client.BreakingBlockEffectMixin\"," else ""
@@ -63,8 +62,9 @@ dependencies {
     modImplementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")
 
     //sodium
-    modCompileOnly("maven.modrinth:sodium:${property("deps.sodium")}")
-    //modImplementation("maven.modrinth:sodium:${property("deps.sodium")}")
+    //modCompileOnly("maven.modrinth:sodium:${property("deps.sodium")}")
+    modImplementation("maven.modrinth:sodium:${property("deps.sodium")}")
+    modCompileOnly("maven.modrinth:iris:${property("deps.iris")}")
 }
 
 tasks {

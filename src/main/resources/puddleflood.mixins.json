@@ -15,7 +15,6 @@
     "WaterFluidMixin"
   ],
   "client": [
-    ${FluidRendererImplMixin}
     ${ChunkBuilderMeshingTaskMixin}
     ${DefaultFluidRendererMixin}
     ${BreakingBlockEffectMixin}

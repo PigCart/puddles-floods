@@ -54,4 +54,14 @@ public class ConfigResponders {
             return Minecraft.getInstance().getSingleplayerServer() != null;
         }
     }
+
+    public static class IsNot1211 implements Function<Object, Boolean> {
+        public Boolean apply(Object configContext) {
+            //? 1.21.1 {
+            /*return false;
+            *///?} else {
+            return true;
+            //?}
+        }
+    }
 }

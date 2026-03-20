@@ -22,7 +22,6 @@ tasks.named<ProcessResources>("processResources") {
         this["version_range"] = prop("version_range")
 
         // insert version-specific mixins
-        this["FluidRendererImplMixin" ] = if (sc.current.parsed  >= "1.21.1") "\"sodium.FluidRendererImplMixin\"," else ""
         this["ChunkBuilderMeshingTaskMixin"] = if (sc.current.parsed  < "26.1") "\"sodium.ChunkBuilderMeshingTaskMixin\"," else ""
         this["DefaultFluidRendererMixin"   ] = if (sc.current.parsed  < "26.1") "\"sodium.DefaultFluidRendererMixin\"," else ""
         this["BreakingBlockEffectMixin"    ] = if (sc.current.parsed  < "26.1") "\"client.BreakingBlockEffectMixin\"," else ""
@@ -46,7 +45,8 @@ repositories {
 
 dependencies {
     implementation("org.sinytra.forgified-fabric-api:forgified-fabric-api:${prop("deps.forgified_fabric_api")}")
-    compileOnly("maven.modrinth:sodium:${property("deps.sodium")}")
+    implementation("maven.modrinth:sodium:${property("deps.sodium")}")
+    implementation("maven.modrinth:iris:${property("deps.iris")}")
 }
 
 neoForge {

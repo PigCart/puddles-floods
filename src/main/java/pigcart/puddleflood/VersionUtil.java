@@ -12,7 +12,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import pigcart.puddleflood.config.ConfigManager;
 //? >=1.21.11 {
 /*import net.minecraft.world.attribute.EnvironmentAttributes;
 *///?}
@@ -27,6 +29,21 @@ public class VersionUtil {
     // FastColor removed in modern versions
     public static int getBlue(int packedColor) {
         return packedColor & 255;
+    }
+
+    public static boolean forceWaterRender(BlockState state) {
+        return state.is(PuddleFlood.PUDDLE_BLOCK)
+                && ConfigManager.config.useShaderpackWater
+                //? forge {
+                /*&& net.minecraftforge.fml.ModList.get().isLoaded("iris")
+                *///?} else {
+                && net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("iris")
+                //?}
+
+                //? <26.1 {
+                /*&& net.irisshaders.iris.api.v0.IrisApi.getInstance().isShaderPackInUse()
+                *///?}
+        ;
     }
 
     @SuppressWarnings("removal")

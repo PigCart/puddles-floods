@@ -1,7 +1,6 @@
 package pigcart.puddleflood.config;
 
-import pigcart.puddleflood.config.gui.ConfigResponders.ClientHasAuthority;
-import pigcart.puddleflood.config.gui.ConfigResponders.ReloadChunks;
+import pigcart.puddleflood.config.gui.ConfigResponders.*;
 import pigcart.puddleflood.config.gui.Annotations.*;
 
 
@@ -9,6 +8,7 @@ public class ConfigData {
     @NoGUI public byte configVersion = 0;
 
     @OnChange(ReloadChunks.class)
+    @OnlyEditableIf(IsNot1211.class)
     public boolean useShaderpackWater = true;
 
     public boolean doFloods = true;
