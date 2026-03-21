@@ -15,7 +15,6 @@
     "WaterFluidMixin"
   ],
   "client": [
-    ${ChunkBuilderMeshingTaskMixin}
     ${DefaultFluidRendererMixin}
     ${BreakingBlockEffectMixin}
     "client.AbstractWidgetMixin",
@@ -23,7 +22,8 @@
     "client.BlockStateBaseMixin",
     "client.ClientPacketListenerMixin",
     "client.DripParticleMixin",
-    "client.LiquidBlockRendererMixin"
+    "client.LiquidBlockRendererMixin",
+    "iris.IdMapMixin"
   ],
   "refmap": "puddleflood.refmap.json"
 }

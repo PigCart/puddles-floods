@@ -20,8 +20,6 @@ tasks.named<ProcessResources>("processResources") {
         this["version_range"] = prop("version_range")
 
         // insert version-specific mixins
-        this["FluidRendererImplMixin" ] = "" // >1.20.1 only
-        this["ChunkBuilderMeshingTaskMixin"] = "\"sodium.ChunkBuilderMeshingTaskMixin\","// <21.6
         this["DefaultFluidRendererMixin"   ] = "\"sodium.DefaultFluidRendererMixin\","// <21.6
         this["BreakingBlockEffectMixin"    ] = "\"client.BreakingBlockEffectMixin\"," // <1.21.9
     }

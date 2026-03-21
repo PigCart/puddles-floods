@@ -1,3 +1,8 @@
+# v1.1.2
+###### Mar 21, 2026
+- fixed crash on neoforge when sodium is loaded without iris
+- fixed shader pack integration not functioning on 1.21.1
+
 # v1.1.1
 ###### Mar 21, 2026
 - added minecraft 26.1 support (github build only; not published yet)

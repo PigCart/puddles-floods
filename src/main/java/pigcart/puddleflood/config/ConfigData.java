@@ -7,8 +7,8 @@ import pigcart.puddleflood.config.gui.Annotations.*;
 public class ConfigData {
     @NoGUI public byte configVersion = 0;
 
-    @OnChange(ReloadChunks.class)
-    @OnlyEditableIf(IsNot1211.class)
+    @OnChange(ReloadShaders.class)
+    @OnlyEditableIf(ShadersEnabled.class)
     public boolean useShaderpackWater = true;
 
     public boolean doFloods = true;

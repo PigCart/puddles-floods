@@ -31,18 +31,15 @@ public class VersionUtil {
         return packedColor & 255;
     }
 
-    public static boolean forceWaterRender(BlockState state) {
-        return state.is(PuddleFlood.PUDDLE_BLOCK)
-                && ConfigManager.config.useShaderpackWater
-                //? forge {
-                /*&& net.minecraftforge.fml.ModList.get().isLoaded("oculus")
-                *///?} else {
-                && net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("iris")
+    public static boolean shadersEnabled() {
+        return  //? forge {
+                /*net.minecraftforge.fml.ModList.get().isLoaded("oculus")
+                 *///?} else {
+                net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("iris")
                 //?}
-
                 //? <26.1 {
                 /*&& net.irisshaders.iris.api.v0.IrisApi.getInstance().isShaderPackInUse()
-                *///?}
+                 *///?}
         ;
     }
 
