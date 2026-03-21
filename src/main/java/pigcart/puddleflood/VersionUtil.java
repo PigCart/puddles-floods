@@ -35,7 +35,7 @@ public class VersionUtil {
         return state.is(PuddleFlood.PUDDLE_BLOCK)
                 && ConfigManager.config.useShaderpackWater
                 //? forge {
-                /*&& net.minecraftforge.fml.ModList.get().isLoaded("iris")
+                /*&& net.minecraftforge.fml.ModList.get().isLoaded("oculus")
                 *///?} else {
                 && net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("iris")
                 //?}

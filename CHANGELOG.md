@@ -1,6 +1,6 @@
 # v1.1.1
-###### in progress
-- added minecraft 26.1 support
+###### Mar 21, 2026
+- added minecraft 26.1 support (github build only; not published yet)
 - fixed server crash caused by puddle block updates running client code on the server
 - fixed iris shader packs sometimes not applying water shaders to puddles
 
