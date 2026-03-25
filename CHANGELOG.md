@@ -1,3 +1,7 @@
+# v1.1.3
+###### Mar 24, 2026
+- fixed sodium & iris integration to function in minecraft 26.1
+
 # v1.1.2
 ###### Mar 21, 2026
 - fixed crash on neoforge when sodium is loaded without iris

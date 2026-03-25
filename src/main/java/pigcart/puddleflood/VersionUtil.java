@@ -37,10 +37,7 @@ public class VersionUtil {
                  *///?} else {
                 net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("iris")
                 //?}
-                //? <26.1 {
-                /*&& net.irisshaders.iris.api.v0.IrisApi.getInstance().isShaderPackInUse()
-                 *///?}
-        ;
+                && net.irisshaders.iris.api.v0.IrisApi.getInstance().isShaderPackInUse();
     }
 
     @SuppressWarnings("removal")

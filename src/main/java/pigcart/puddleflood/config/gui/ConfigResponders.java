@@ -12,7 +12,6 @@ public class ConfigResponders {
 
     public static class ReloadShaders implements Runnable {
         public void run() {
-            //? <26.1 {
             if (shadersEnabled()) {
                 try {
                     net.irisshaders.iris.Iris.reload();
@@ -20,7 +19,6 @@ public class ConfigResponders {
                     throw new RuntimeException(e);
                 }
             }
-            //?}
         }
     }
 

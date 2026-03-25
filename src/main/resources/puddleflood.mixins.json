@@ -15,8 +15,8 @@
     "WaterFluidMixin"
   ],
   "client": [
-    ${DefaultFluidRendererMixin}
     ${BreakingBlockEffectMixin}
+    "sodium.DefaultFluidRendererMixin",
     "client.AbstractWidgetMixin",
     "client.BlockBehaviourMixin",
     "client.BlockStateBaseMixin",

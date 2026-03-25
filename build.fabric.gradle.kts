@@ -23,7 +23,6 @@ tasks.named<ProcessResources>("processResources") {
         this["access_widener"]= prop("mod.id")
 
         // insert version-specific mixins
-        this["DefaultFluidRendererMixin"   ] = if (sc.current.parsed  < "26.1") "\"sodium.DefaultFluidRendererMixin\"," else ""
         this["BreakingBlockEffectMixin"    ] = if (sc.current.parsed  < "26.1") "\"client.BreakingBlockEffectMixin\"," else ""
     }
 

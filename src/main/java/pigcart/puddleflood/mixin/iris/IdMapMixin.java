@@ -1,4 +1,3 @@
-//? <26.1 {
 package pigcart.puddleflood.mixin.iris;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
@@ -18,6 +17,7 @@ import static pigcart.puddleflood.config.ConfigManager.config;
 @Mixin(IdMap.class)
 public class IdMapMixin {
 
+    //~ if >=26.1 'lambda$parseBlockMap$2' -> 'lambda$parseBlockMap$0'
     @WrapOperation(method = "lambda$parseBlockMap$2", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"), remap = false)
     private static boolean addBlockEntry(List instance, Object entry, Operation<Boolean> original) {
         if (config.useShaderpackWater && entry instanceof BlockEntry blockEntry) {
@@ -28,4 +28,3 @@ public class IdMapMixin {
         return original.call(instance, entry);
     }
 }
-//?}
