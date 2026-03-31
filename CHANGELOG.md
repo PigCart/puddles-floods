@@ -1,3 +1,19 @@
+### version scheme
+`overhaul.feature.hotfix`
+- **overhaul** number is increased when significant parts of code are replaced or introduced
+- **feature** number is increased when a new feature is added, and resets after an overhaul
+- **hotfix** number is increased when something minor is tweaked or a bug is fixed, and resets after a new feature
+
+this mimics the version scheme used by minecraft between 2011 and 2024.
+
+# v1.1.4
+###### Apr 1, 2026
+- fixed compatibility with sodium 0.8.7 in mc1.21.11
+- fixed unreadable config inputs when caramelchat is installed
+- fixed localization breaking decimal number inputs
+- fixed number inputs not accepting negative values
+- Added small puddle edge model variant
+
 # v1.1.3
 ###### Mar 24, 2026
 - fixed sodium & iris integration to function in minecraft 26.1

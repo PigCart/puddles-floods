@@ -20,7 +20,7 @@ tasks.named<ProcessResources>("processResources") {
         this["mod_icon"] =      prop("mod.icon")
         this["version_range"] = prop("version_range")
 
-        this["access_widener"]= prop("mod.id")
+        this["access_widener"] = ""
 
         // insert version-specific mixins
         this["BreakingBlockEffectMixin"    ] = if (sc.current.parsed  < "26.1") "\"client.BreakingBlockEffectMixin\"," else ""

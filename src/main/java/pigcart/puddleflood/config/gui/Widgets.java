@@ -11,18 +11,18 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.Mth;
 import pigcart.puddleflood.PuddleFlood;
 import pigcart.puddleflood.VersionUtil;
-import pigcart.puddleflood.config.ConfigManager;
 import pigcart.puddleflood.config.gui.Annotations.*;
 import pigcart.puddleflood.config.gui.Annotations.Label;
 
-import java.awt.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.net.URI;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -85,6 +85,7 @@ public class Widgets {
 
     public static AbstractWidget getFloat(int width, int x, String name, float initialValue, Consumer<Float> onValueChange, Function<Object, Component> valueFormatter) {
         final DecimalFormat df = new DecimalFormat();
+        df.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT));
         df.setMaximumFractionDigits(6);
         final InputWidget inputWidget = new InputWidget(width, x,
                 df.format(initialValue),
@@ -150,20 +151,6 @@ public class Widgets {
                 this.setMessage(Component.translatable(name).append(": ").append(valueFormatter.apply(realValue)));
                 onValueChange.accept(realValue);
             }
-        };
-    }
-
-    public static AbstractWidget[] getHexColor(int width, int x, String name, Object initialValue, Consumer<Object> onValueChange, Function<Object, Component> valueFormatter) {
-        String value = ConfigManager.ColorTypeAdapter.getString((Color) initialValue);
-        Consumer<String> onChange = (string) -> {
-            Color color = ConfigManager.ColorTypeAdapter.getColor(string);
-            onValueChange.accept(color);
-        };
-        InputWidget input = (InputWidget) getString(width, x, name, value, onChange, valueFormatter);
-        input.setFilter(InputWidget.NON_HEX);
-        return new AbstractWidget[]{
-                Widgets.getOptionLabel(Component.translatable(name).append(":")),
-                input
         };
     }
 
@@ -241,16 +228,17 @@ public class Widgets {
                 )};
                 screen.add(widgets);
             } else {
-                AbstractWidget[] widgets = getOptionWidget(screen, field, name, currentValue, defaultValue, onValueChange, valueFormatter, type);
+                AbstractWidget[] widgets = getRowWidgets(screen, field, name, currentValue, defaultValue, onValueChange, valueFormatter, type);
                 for (AbstractWidget widget : widgets) {
                     widget.active = editable;
+                    widget.setTooltip(Tooltip.create(Component.translatableWithFallback(name + ".description", "")));
                 }
                 screen.add(widgets);
             }
         }
     }
     @SuppressWarnings("unchecked")
-    private static AbstractWidget[] getOptionWidget(ConfigScreen screen, Field field, String name, Object currentValue, Object defaultValue, Consumer onValueChange, Function<Object, Component> valueFormatter, Class<?> type) {
+    private static AbstractWidget[] getRowWidgets(ConfigScreen screen, Field field, String name, Object currentValue, Object defaultValue, Consumer onValueChange, Function<Object, Component> valueFormatter, Class<?> type) {
         if (field.isAnnotationPresent(Slider.class)) {
             final Slider slider = field.getAnnotation(Slider.class);
             if (type.equals(float.class)) {
@@ -293,8 +281,6 @@ public class Widgets {
                             currentValue.toString(),
                             true
             )))};
-        } else if (type.equals(Color.class)) {
-            return getHexColor(BIG_BUTTON_WIDTH, 0, name, currentValue, onValueChange, valueFormatter);
         } else if (type.getFields().length > 0) {
             return new AbstractWidget[]{
                     Widgets.getButton(Component.translatable(name).append("..."), (bttn)->
@@ -332,7 +318,7 @@ public class Widgets {
             ((AbstractWidgetAccess)removeButton).particle_rain$setOffset(BIG_BUTTON_WIDTH - BUTTON_HEIGHT);
             screen.add(listEntryWidget, removeButton);
         }
-        final MutableComponent addButtonText = Component.translatable("puddleflood.addNew");
+        final MutableComponent addButtonText = Component.translatable("cosycritters.addNew");
         final AbstractWidget addButton = Widgets.getButton(addButtonText, (bttn) -> {
             Object newListEntry = getNewValue(listEntryType);
             Object defaultEntry = getNewValue(listEntryType);

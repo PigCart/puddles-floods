@@ -20,7 +20,7 @@ tasks.named<ProcessResources>("processResources") {
         this["mod_icon"] =      prop("mod.icon")
         this["version_range"] = prop("version_range")
 
-        this["access_widener"] = "${prop("mod.id")}.unobf"
+        this["access_widener"] = ""//"\"accessWidener\" : \"${prop("mod.id")}.accesswidener\""
 
         // insert version-specific mixins
         // sodium mixins disabled until sodium is available for this version

@@ -21,6 +21,7 @@ import pigcart.puddleflood.config.gui.ConfigScreen;
 
 import static pigcart.puddleflood.PuddleFlood.*;
 
+@SuppressWarnings("removal") // shut up!!!!!
 @Mod(MOD_ID)
 public class ForgeEntrypoint {
 

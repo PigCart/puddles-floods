@@ -10,4 +10,4 @@ Minecraft mods that allows rivers to visually flood their banks and adds puddles
 
 ### Links
 - [Mod description and download](https://modrinth.com/mod/puddles-floods)
-- [Update notes / changelog](https://https://github.com/PigCart/puddles-floods/blob/main/CHANGELOG.md)
+- [Update notes / changelog](CHANGELOG.md)

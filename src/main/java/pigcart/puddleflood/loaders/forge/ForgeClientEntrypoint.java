@@ -17,6 +17,7 @@ import static pigcart.puddleflood.PuddleFlood.MOD_ID;
 import static pigcart.puddleflood.PuddleFlood.PUDDLE_BLOCK;
 import static pigcart.puddleflood.PuddleFloodClient.getCommands;
 
+@SuppressWarnings("removal")
 public class ForgeClientEntrypoint {
 
     public static void onTickEvent(TickEvent.ClientTickEvent event) {
