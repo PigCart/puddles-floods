@@ -1,0 +1,82 @@
+mod.id = "puddleflood"
+mod.name = "Puddles & Floods"
+mod.version = "1.1.4"
+mod.description = "Adds detailed puddles and allows rivers to visually flood their banks"
+mod.author = "pigcart"
+mod.sources = "https://github.com/PigCart/puddles-floods"
+mod.issues = "https://github.com/PigCart/puddles-floods/issues?q=is%3Aissue"
+mod.homepage = "https://modrinth.com/mod/puddles-floods"
+mod.license = "MIT"
+mod.icon = "assets/puddleflood/icon.png"
+
+mod.group = "pigcart"
+
+deps.fabric-loader = "0.18.4"
+
+["1.20.1-fabric"]
+deps.minecraft = "1.20.1"
+version_range = ">=1.20 <=1.20.1"
+deps.parchment = "1.20.1:2023.09.03"
+deps.fabric-api = "0.92.5+1.20.1"
+deps.modmenu = "7.2.2"
+deps.sodium = "mc1.20.1-0.5.12-beta.2-fabric"
+deps.iris = "1.7.6+1.20.1"
+
+["1.20.1-forge"]
+deps.minecraft = "1.20.1"
+version_range = "[1.20,1.20.1]"
+deps.forge = "1.20.1-47.4.2"
+deps.parchment = "1.20.1:2023.09.03"
+
+deps.embeddium = "0.3.31+mc1.20.1"
+deps.forgified_fabric_api = "0.92.6+1.11.14+1.20.1"
+deps.iris = "1.20.1-1.8.0"
+
+["1.21.1-fabric"]
+deps.minecraft = "1.21.1"
+version_range = "1.21.1"
+deps.parchment = "1.21.1:2024.11.17"
+
+deps.fabric-api = "0.115.4+1.21.1"
+deps.modmenu = "11.0.3"
+deps.sodium = "mc1.21.1-0.6.13-fabric"
+deps.iris = "1.8.8+1.21.1-fabric"
+
+["1.21.1-neoforge"]
+deps.minecraft = "1.21.1"
+version_range = "[1.21.1]"
+deps.neoforge = "21.1.169"
+deps.parchment = "1.21.1:2024.11.17"
+
+deps.forgified_fabric_api = "0.116.7+2.2.0+1.21.1"
+deps.sodium = "mc1.21.1-0.6.13-neoforge"
+deps.iris = "1.8.12+1.21.1-neoforge"
+
+["1.21.9-fabric"]
+deps.minecraft = "1.21.9"
+version_range = ">=1.21.9 <=1.21.10"
+deps.parchment = "1.21.9:2025.10.05"
+
+deps.fabric-api = "0.133.14+1.21.9"
+deps.modmenu = "16.0.0-rc.1"
+deps.sodium = "mc1.21.10-0.7.3-fabric"
+deps.iris = "1.9.7+1.21.10-fabric"
+
+["1.21.11-fabric"]
+deps.minecraft = "1.21.11"
+version_range = "1.21.11"
+deps.parchment = "1.21.11:2025.12.20"
+
+deps.fabric-api = "0.140.2+1.21.11"
+deps.modmenu = "17.0.0-beta.1"
+deps.sodium = "mc1.21.11-0.8.7-fabric"
+deps.iris = "1.10.6+1.21.11-fabric"
+
+["26.1-fabric"]
+deps.minecraft = "26.1"
+version_range = ">=26.1"
+
+deps.fabric-api = "0.143.12+26.1"
+deps.modmenu = "18.0.0-alpha.5"
+deps.sodium = "mc26.1-0.8.7-fabric"
+deps.iris = "1.10.7+26.1-fabric"

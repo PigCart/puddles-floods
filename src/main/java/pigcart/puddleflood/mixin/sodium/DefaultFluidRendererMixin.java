@@ -3,7 +3,7 @@ package pigcart.puddleflood.mixin.sodium;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-//~ if >=26.1 'net.minecraft.world.level.BlockAndTintGetter' -> 'net.minecraft.client.renderer.block.BlockAndTintGetter'
+//~ if >=26.1 'world.level' -> 'client.renderer.block'
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.material.Fluid;
 import org.spongepowered.asm.mixin.Mixin;
@@ -11,20 +11,20 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import pigcart.puddleflood.PuddleFlood;
-//? >=1.21.1 {
-/*import me.jellysquid.mods.sodium.client.render.chunk.compile.pipeline.DefaultFluidRenderer;
-*///?} else {
-import me.jellysquid.mods.sodium.client.render.chunk.compile.pipeline.FluidRenderer;
-//?}
+import me.jellysquid.mods.sodium.client.render.chunk.compile.pipeline./*?>=1.21.1{*//*DefaultFluidRenderer*//*?}else{*/FluidRenderer/*?}*/;
+
 
 @Mixin(/*? >=1.21.1 {*//*DefaultFluidRenderer*//*?}else{*/FluidRenderer/*?}*/.class)
 public abstract class DefaultFluidRendererMixin {
-
-    @Inject(method = /*?<26.1{*/"fluidHeight"/*?}else{*//*"sampleFluidHeight(Lnet/minecraft/client/renderer/block/BlockAndTintGetter;Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/core/BlockPos;)F"*//*?}*/, at = @At("HEAD"), cancellable = true, remap = false)
+    
+    @Inject(method = /*?<1.21.11{*/"fluidHeight"
+            /*?}else if <26.1{*//*"sampleFluidHeight(Lnet/minecraft/world/level/BlockAndTintGetter;Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/core/BlockPos;)F"
+            *//*?}else{*//*"sampleFluidHeight(Lnet/minecraft/client/renderer/block/BlockAndTintGetter;Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/core/BlockPos;)F"
+            *//*?}*/, at = @At("HEAD"), cancellable = true, remap = false)
     public void fluidHeight(BlockAndTintGetter level,
                             Fluid fluid,
                             BlockPos pos,
-                            /*?<26.1{*/Direction direction,/*?}*/
+                            /*?<1.21.11{*/Direction direction,/*?}*/
                             CallbackInfoReturnable<Float> cir
     ) {
         if (level.getBlockState(pos.above()).is(PuddleFlood.PUDDLE_BLOCK)) {
@@ -32,7 +32,7 @@ public abstract class DefaultFluidRendererMixin {
         }
     }
 
-    //? >=26.1 {
+    //? >=1.21.11 {
     /*@Inject(method = "fluidCornerHeight", at = @At("HEAD"), cancellable = true, remap = false)
     public void fluidCornerHeight(BlockAndTintGetter level, BlockPos origin, Fluid fluid, float fluidHeight, Direction dirA, Direction dirB, float fluidHeightA, float fluidHeightB, boolean exposedA, boolean exposedB, CallbackInfoReturnable<Float> cir
     ) {
