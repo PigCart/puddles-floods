@@ -1,0 +1,21 @@
+{
+  "puddleflood.title": "積水與洪水",
+
+  "block.puddleflood.puddle": "積水",
+  "item.puddleflood.puddle": "積水",
+
+  "puddleflood.doFloods": "洪水",
+  "puddleflood.doRainPuddles": "降雨積水",
+  "puddleflood.doDripPuddles":"滴落積水",
+  "puddleflood.doPotionPuddles": "藥水濺射積水",
+  "puddleflood.doCauldronPuddles":"煉藥鍋積水",
+  "puddleflood.doFlowingWaterPuddles": "水流積水",
+  "puddleflood.doMeltingSnowPuddles":"融雪積水",
+  "puddleflood.useShaderpackWater": "使用光影水體",
+
+  "puddleflood.range": "積聚範圍",
+  "puddleflood.collectionSpeed": "積聚速度",
+  "puddleflood.evaporationSpeed": "蒸發速度",
+  "puddleflood.rainLevel": "積水在降雨期間的覆蓋範圍",
+  "puddleflood.stormLevel": "積水在雷雨期間的覆蓋範圍"
+}

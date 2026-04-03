@@ -1,9 +1,21 @@
 {
-  "puddleflood.doPuddles": "水坑",
+  "puddleflood.title": "积水与洪水",
 
-  "puddleflood.title": "水坑选项",
-  "puddleflood.updateDelay": "水坑刷新延迟",
-  "puddleflood.updateStep": "水坑覆盖范围更新量",
-  "puddleflood.rainLevel": "在降雨时覆盖",
-  "puddleflood.stormLevel": "在雷暴时覆盖"
+  "block.puddleflood.puddle": "积水",
+  "item.puddleflood.puddle": "积水",
+
+  "puddleflood.doFloods": "洪水",
+  "puddleflood.doRainPuddles": "降雨积水",
+  "puddleflood.doDripPuddles":"滴落积水",
+  "puddleflood.doPotionPuddles": "药水溅射积水",
+  "puddleflood.doCauldronPuddles":"炼药锅积水",
+  "puddleflood.doFlowingWaterPuddles": "水流积水",
+  "puddleflood.doMeltingSnowPuddles":"融雪积水",
+  "puddleflood.useShaderpackWater": "使用光影水体",
+
+  "puddleflood.range": "积聚范围",
+  "puddleflood.collectionSpeed": "积聚速度",
+  "puddleflood.evaporationSpeed": "蒸发速度",
+  "puddleflood.rainLevel": "积水在降雨时覆盖范围",
+  "puddleflood.stormLevel": "积水在雷暴积覆盖范围"
 }
