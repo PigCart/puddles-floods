@@ -20,4 +20,7 @@ stonecutter parameters {
     replacements.string(current.parsed >= "26.1") {
         replace("level.random", "level.getRandom()")
     }
+    replacements.string(current.parsed >= "26.2") {
+        replace("setScreen", "setScreenAndShow")
+    }
 }

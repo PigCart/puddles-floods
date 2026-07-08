@@ -60,8 +60,8 @@ dependencies {
     modImplementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")
 
     //sodium
-    //modCompileOnly("maven.modrinth:sodium:${property("deps.sodium")}")
-    modImplementation("maven.modrinth:sodium:${property("deps.sodium")}")
+    modCompileOnly("maven.modrinth:sodium:${property("deps.sodium")}")
+    //modImplementation("maven.modrinth:sodium:${property("deps.sodium")}")
     modCompileOnly("maven.modrinth:iris:${property("deps.iris")}")
 }
 

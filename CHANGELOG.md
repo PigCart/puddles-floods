@@ -4,7 +4,9 @@
 - **feature** number is increased when a new feature is added, and resets after an overhaul
 - **hotfix** number is increased when something minor is tweaked or a bug is fixed, and resets after a new feature
 
-this mimics the version scheme used by minecraft between 2011 and 2024.
+# v1.1.5
+###### Jul 8, 2026
+- added support for minecraft 26.2
 
 # v1.1.4
 ###### Apr 1, 2026
