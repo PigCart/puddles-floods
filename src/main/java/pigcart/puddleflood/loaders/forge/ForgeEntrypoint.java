@@ -16,6 +16,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
+import pigcart.puddleflood.PuddleFlood;
 import pigcart.puddleflood.block.PuddleBlock;
 import pigcart.puddleflood.config.gui.ConfigScreen;
 
@@ -45,6 +46,7 @@ public class ForgeEntrypoint {
                     )
             );
         }
+        PuddleFlood.onInitialize();
     }
 
     public static void onRegisterEvent(RegisterEvent event) {
