@@ -9,6 +9,7 @@
 - added support for minecraft 26.2
 - fixed config not loading on forge
 - added an option to disable raising water height to connect to puddles
+- added chinese translations (ty Sasaki-Akari)
 
 # v1.1.4
 ###### Apr 1, 2026
