@@ -13,6 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import pigcart.puddleflood.PuddleFlood;
 import me.jellysquid.mods.sodium.client.render.chunk.compile.pipeline./*?>=1.21.1{*//*DefaultFluidRenderer*//*?}else{*/FluidRenderer/*?}*/;
 
+import static pigcart.puddleflood.config.ConfigManager.config;
+
 
 @Mixin(/*? >=1.21.1 {*//*DefaultFluidRenderer*//*?}else{*/FluidRenderer/*?}*/.class)
 public abstract class DefaultFluidRendererMixin {
@@ -27,7 +29,7 @@ public abstract class DefaultFluidRendererMixin {
                             /*?<1.21.11{*/Direction direction,/*?}*/
                             CallbackInfoReturnable<Float> cir
     ) {
-        if (level.getBlockState(pos.above()).is(PuddleFlood.PUDDLE_BLOCK)) {
+        if (config.raiseWaterHeight && level.getBlockState(pos.above()).is(PuddleFlood.PUDDLE_BLOCK)) {
             cir.setReturnValue(1.0F);
         }
     }

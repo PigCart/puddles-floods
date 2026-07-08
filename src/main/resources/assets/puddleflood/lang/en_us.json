@@ -12,6 +12,7 @@
   "puddleflood.doFlowingWaterPuddles": "Flowing water puddles",
   "puddleflood.doMeltingSnowPuddles":"Melting snow puddles",
   "puddleflood.useShaderpackWater": "Use shaderpack water",
+  "puddleflood.raiseWaterHeight": "Raise water level to connect to puddle",
 
   "puddleflood.range": "Collection range",
   "puddleflood.collectionSpeed": "Collection speed",

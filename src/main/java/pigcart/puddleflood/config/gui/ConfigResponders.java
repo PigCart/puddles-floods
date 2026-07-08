@@ -22,6 +22,13 @@ public class ConfigResponders {
         }
     }
 
+    public static class ReloadChunks implements Runnable {
+        public void run() {
+            //~ if >=26.2 'levelRenderer' -> 'levelExtractor'
+            Minecraft.getInstance().levelRenderer.allChanged();
+        }
+    }
+
     public static class ClientHasAuthority implements Function<Object, Boolean> {
         public Boolean apply(Object configContext) {
             if (Minecraft.getInstance().level == null) return true;

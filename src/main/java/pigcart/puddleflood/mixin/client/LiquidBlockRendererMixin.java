@@ -12,6 +12,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import pigcart.puddleflood.PuddleFlood;
 
+import static pigcart.puddleflood.config.ConfigManager.config;
+
 @Mixin(/*?>=26.1{*//*FluidRenderer*//*?}else{*/LiquidBlockRenderer/*?}*/.class)
 public class LiquidBlockRendererMixin {
 
@@ -23,7 +25,7 @@ public class LiquidBlockRendererMixin {
             //?}
             "Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/material/FluidState;)F",at = @At("HEAD"), cancellable = true)
     public void getHeight(BlockAndTintGetter level, Fluid fluid, BlockPos pos, BlockState blockState, FluidState fluidState, CallbackInfoReturnable<Float> cir) {
-        if (level.getBlockState(pos.above()).is(PuddleFlood.PUDDLE_BLOCK)) {
+        if (config.raiseWaterHeight && level.getBlockState(pos.above()).is(PuddleFlood.PUDDLE_BLOCK)) {
             cir.setReturnValue(1.0F);
         }
     }

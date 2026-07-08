@@ -7,6 +7,8 @@
 # v1.1.5
 ###### Jul 8, 2026
 - added support for minecraft 26.2
+- fixed config not loading on forge
+- added an option to disable raising water height to connect to puddles
 
 # v1.1.4
 ###### Apr 1, 2026

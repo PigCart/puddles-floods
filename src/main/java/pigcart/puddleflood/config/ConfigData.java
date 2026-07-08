@@ -10,6 +10,8 @@ public class ConfigData {
     @OnChange(ReloadShaders.class)
     @OnlyEditableIf(ShadersEnabled.class)
     public boolean useShaderpackWater = true;
+    @OnChange(ReloadChunks.class)
+    public boolean raiseWaterHeight = true;
 
     public boolean doFloods = true;
     public boolean doRainPuddles = true;
