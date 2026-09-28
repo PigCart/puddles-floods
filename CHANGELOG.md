@@ -4,6 +4,11 @@
 - **feature** number is increased when a new feature is added, and resets after an overhaul
 - **hotfix** number is increased when something minor is tweaked or a bug is fixed, and resets after a new feature
 
+This scheme reflects the general scale of changes without making specific promises regarding compatibility.
+
+# v1.1.6
+- fixed puddles blocking water in 26.3 (added puddles to `washed_away_by_fluids` block tag)
+
 # v1.1.5
 ###### Jul 8, 2026
 - added support for minecraft 26.2

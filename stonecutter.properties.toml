@@ -1,6 +1,6 @@
 mod.id = "puddleflood"
 mod.name = "Puddles & Floods"
-mod.version = "1.1.5"
+mod.version = "1.1.6"
 mod.description = "Adds detailed puddles and allows rivers to visually flood their banks"
 mod.author = "pigcart"
 mod.sources = "https://github.com/PigCart/puddles-floods"
@@ -74,7 +74,7 @@ deps.iris = "1.10.6+1.21.11-fabric"
 
 ["26.1-fabric"]
 deps.minecraft = "26.1"
-version_range = ">=26.1"
+version_range = ">=26.1 <26.2"
 
 deps.fabric-api = "0.145.0+26.1"
 deps.modmenu = "18.0.0-alpha.8"
